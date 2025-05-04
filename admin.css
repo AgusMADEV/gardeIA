@@ -1,166 +1,195 @@
-/* Reset básico */
+/* admin.css */
+:root {
+  --bg: #FBFBFC;
+  --card-bg: #DEECD8;
+  --primary: #79AD75;
+  --secondary: #BADBB2;
+  --accent: #D56671;
+  --text: #333;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
-  }
-  
-  /* Login Styles */
-  .login-container {
-    max-width: 400px;
-    margin: 100px auto;
-    background-color: #fff;
-    padding: 20px 30px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  .login-container h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #0d6efd;
-  }
-  .login-container input[type="text"],
-  .login-container input[type="password"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-  }
-  .login-container input[type="submit"] {
-    width: 100%;
-    background-color: #0d6efd;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-  }
-  .login-container input[type="submit"]:hover {
-    background-color: #0b5ed7;
-  }
-  .error {
-    color: red;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  /* Admin Panel Layout */
-  #admin-panel {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-  
-  /* Header */
-  header {
-    background-color: #0d6efd;
-    color: #fff;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  header h1 {
-    font-size: 24px;
-  }
-  header .top-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin-left: 15px;
-  }
-  
-  /* Body: Sidebar + Content */
-  #admin-body {
-    display: flex;
-    flex: 1;
-    overflow: hidden;
-  }
-  .sidebar {
-    width: 200px;
-    background-color: #fff;
-    border-right: 1px solid #ddd;
-    padding: 20px;
-  }
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-  }
-  .sidebar ul li {
-    margin-bottom: 10px;
-  }
-  .sidebar ul li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
-  }
-  
-  /* Content Area */
-  .content-area {
-    flex: 1;
-    padding: 20px;
-    overflow-y: auto;
-    background-color: #fff;
-  }
-  .content-area h2 {
-    margin-bottom: 15px;
-  }
-  
-  /* Tables */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  table, th, td {
-    border: 1px solid #ccc;
-  }
-  th, td {
-    padding: 8px;
-    text-align: left;
-  }
-  
-  /* Forms */
-  form {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 15px;
-    margin-top: 20px;
-  }
-  form label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-  }
-  form input[type="text"],
-  form input[type="password"],
-  form textarea,
-  form select {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-  }
-  form input[type="submit"] {
-    background-color: #0d6efd;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-    margin-top: 15px;
-  }
-  form input[type="submit"]:hover {
-    background-color: #0b5ed7;
-  }
-  
-  /* Message notifications */
-  .message {
-    padding: 10px;
-    background-color: #e2e3e5;
-    margin: 10px 0;
-    border-radius: 4px;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* Login Styles */
+.login-container {
+  max-width: 400px;
+  margin: 80px auto;
+  background-color: var(--card-bg);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.login-container h1 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: var(--primary);
+  font-size: 1.8rem;
+}
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 14px;
+  border: 2px solid var(--secondary);
+  border-radius: 4px;
+}
+.login-container input[type="submit"] {
+  width: 100%;
+  background-color: var(--primary);
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.login-container input[type="submit"]:hover {
+  background-color: var(--secondary);
+}
+.error {
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+/* Admin Panel Layout */
+#admin-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Header */
+header {
+  background-color: var(--primary);
+  color: #fff;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+header h1 {
+  font-size: 1.6rem;
+}
+header .top-nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+/* Body: Sidebar + Content */
+#admin-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+.sidebar {
+  width: 220px;
+  background-color: var(--card-bg);
+  padding: 24px;
+  border-right: 1px solid var(--secondary);
+}
+.sidebar ul {
+  list-style: none;
+}
+.sidebar ul li {
+  margin-bottom: 16px;
+}
+.sidebar ul li a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 1rem;
+  display: block;
+  padding: 8px;
+  border-radius: 4px;
+}
+.sidebar ul li a:hover {
+  background-color: var(--secondary);
+}
+
+/* Content Area */
+.content-area {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  background-color: var(--bg);
+}
+.content-area h2 {
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+th, td {
+  padding: 12px;
+  border: 1px solid var(--secondary);
+  text-align: left;
+}
+th {
+  background-color: var(--secondary);
+}
+
+/* Forms */
+form {
+  background-color: var(--card-bg);
+  border: 1px solid var(--secondary);
+  padding: 20px;
+  margin-top: 24px;
+  border-radius: 6px;
+}
+form label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+}
+form input[type="text"],
+form input[type="password"],
+form textarea,
+form select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 2px solid var(--secondary);
+  border-radius: 4px;
+}
+form input[type="submit"] {
+  background-color: var(--primary);
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+form input[type="submit"]:hover {
+  background-color: var(--secondary);
+}
+
+/* Message notifications */
+.message {
+  padding: 12px;
+  background-color: var(--secondary);
+  margin: 16px 0;
+  border-radius: 4px;
+  color: var(--text);
+}

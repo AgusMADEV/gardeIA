@@ -1,32 +1,23 @@
 <?php
 session_start();
 
-// Conexión a la base de datos SQLite y creación de tablas si no existen
 try {
     $db = new PDO('sqlite:chatbot.db');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Crear tabla de conversaciones (faq) si no existe
+    // Crear tabla FAQ si no existe
     $db->exec("CREATE TABLE IF NOT EXISTS faq (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         gatillo TEXT NOT NULL,
         question TEXT NOT NULL,
-        respuesta1 TEXT,
-        respuesta2 TEXT,
-        respuesta3 TEXT,
-        respuesta4 TEXT,
-        respuesta5 TEXT,
-        respuesta6 TEXT,
-        respuesta7 TEXT,
-        respuesta8 TEXT,
-        respuesta9 TEXT,
-        respuesta10 TEXT,
-        respuesta11 TEXT,
-        respuesta12 TEXT,
+        respuesta1 TEXT, respuesta2 TEXT, respuesta3 TEXT,
+        respuesta4 TEXT, respuesta5 TEXT, respuesta6 TEXT,
+        respuesta7 TEXT, respuesta8 TEXT, respuesta9 TEXT,
+        respuesta10 TEXT, respuesta11 TEXT, respuesta12 TEXT,
         respuesta13 TEXT
     )");
 
-    // Crear tabla de usuarios si no existe
+    // Crear tabla Users si no existe
     $db->exec("CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
@@ -37,28 +28,28 @@ try {
 
     // Insertar usuario inicial si no existe
     $stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE username = :username");
-    $stmt->execute([':username' => 'jocarsa']);
+    $stmt->execute([':username' => 'agusmadev']);
     if ($stmt->fetchColumn() == 0) {
         $db->prepare("INSERT INTO users (name, email, username, password) VALUES (:name, :email, :username, :password)")
            ->execute([
                 ':name'     => 'Jose Vicente Carratala',
                 ':email'    => 'info@josevicentecarratala.com',
-                ':username' => 'jocarsa',
-                ':password' => 'jocarsa' // Nota: En producción, usa un hash para la contraseña.
+                ':username' => 'agusmadev',
+                ':password' => 'agusmadev'
            ]);
     }
 } catch (Exception $e) {
     die("Database error: " . $e->getMessage());
 }
 
-// Procesar logout
+// Logout
 if (isset($_GET['action']) && $_GET['action'] == 'logout') {
     session_destroy();
     header("Location: admin.php");
     exit;
 }
 
-// Si el usuario no está logueado, mostrar el formulario de login
+// Login
 if (!isset($_SESSION['admin_logged_in'])) {
     $login_error = '';
     if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['login'])) {
@@ -73,20 +64,20 @@ if (!isset($_SESSION['admin_logged_in'])) {
             header("Location: admin.php");
             exit;
         } else {
-            $login_error = "Invalid credentials.";
+            $login_error = "Credenciales inválidas.";
         }
     }
     ?>
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="es">
     <head>
       <meta charset="UTF-8">
-      <title>Admin Login - jocarsa | violet</title>
+      <title>Admin Login ­– agusmadev | gardeIA</title>
       <link rel="stylesheet" href="admin.css">
     </head>
     <body>
       <div class="login-container">
-         <h1>jocarsa | violet Admin Login</h1>
+         <h1>agusmadev | gardeIA Admin Login</h1>
          <?php if ($login_error) echo "<p class='error'>$login_error</p>"; ?>
          <form method="post" action="admin.php">
             <input type="hidden" name="login" value="1">
@@ -103,7 +94,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
     exit;
 }
 
-// Procesamiento de acciones CRUD
+// CRUD de conversaciones y usuarios
 $message = '';
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['action'])) {
     $action = $_POST['action'];
@@ -255,16 +246,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['action'])) {
 $page = isset($_GET['page']) ? $_GET['page'] : 'conversations';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Admin Panel - jocarsa | violet</title>
+  <title>Admin Panel ­– agusmadev | gardeIA</title>
   <link rel="stylesheet" href="admin.css">
 </head>
 <body>
   <div id="admin-panel">
     <header>
-      <h1>jocarsa | violet</h1>
+      <h1>agusmadev | gardeIA</h1>
       <nav class="top-nav">
         <a href="admin.php?action=logout">Logout</a>
       </nav>
